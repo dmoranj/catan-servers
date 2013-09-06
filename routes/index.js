@@ -32,6 +32,16 @@ exports.listHouses = function(req, res){
     });
 };
 
+exports.listServers = function(req, res){
+    resourceService.listServers(function (error, designResult) {
+        if (error) {
+            res.json(500, restTools.generateError("003", error));
+        } else {
+            res.json(200, designResult);
+        }
+    });
+};
+
 exports.createHouse = function(req, res){
     houseService.buyHouse(
         req.body.login,

@@ -54,6 +54,14 @@ program
     });
 
 program
+    .command('createServer [resourceName] [url] [description]')
+    .description('\n\nThis command register a new Resource Server in the system, to be used in the Resource' +
+        'Server Directory\n\n')
+    .action(function (resourceName, url, description) {
+        resources.createServer(resourceName, url, description, showCallback);
+    });
+
+program
     .command('listHouses')
     .description('\n\nReturn a list of all the created houses\n\n')
     .action(function () {
@@ -72,6 +80,13 @@ program
     .description('\n\nReturn a list of all the available designs\n\n')
     .action(function () {
         houses.listDesigns(showCallback);
+    });
+
+program
+    .command('listResourceServers')
+    .description('\n\nReturn a list of all the available Resource Servers\n\n')
+    .action(function () {
+        resources.listServers(showCallback);
     });
 
 program
@@ -118,6 +133,22 @@ program
             }
         });
     });
+
+program
+    .command('removeResourceServer [id]')
+    .description('\n\nRemove the selected Resource Server from the DB\n\n')
+    .action(function (id) {
+        resources.removeServer(id, function (error, removedResourceServers) {
+            if (error) {
+                showError(error);
+            } else {
+                showOutput({
+                    numberOfRemovals: removedResourceServers
+                });
+            }
+        });
+    });
+
 
 program.parse(process.argv);
 

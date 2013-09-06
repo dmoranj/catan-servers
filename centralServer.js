@@ -15,6 +15,7 @@ function signupRoutes() {
     app.get('/design', routes.listDesigns);
     app.get('/house', routes.listHouses);
     app.post('/house', routes.createHouse);
+    app.get('/resource/server', routes.listServers);
 
     if (config.endpoint.edit) {
         app.get('/resource', routes.getResources);

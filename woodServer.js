@@ -19,6 +19,7 @@ function chop(req, res) {
             res.json(500, restTools.generateError("W001", error));
         } else if (removedWood) {
             res.json(200, removedWood);
+            console.log("Wood chopped!");
         } else {
             res.json(404, {message: "Wood not found. Wait it to grow"});
         }
@@ -27,7 +28,7 @@ function chop(req, res) {
 
 function addWood() {
     resources.create("Madera", function (err, result) {
-
+        console.log("Wood created");
     });
 }
 

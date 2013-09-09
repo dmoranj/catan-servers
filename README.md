@@ -10,6 +10,8 @@ to build different types of houses, that will in turn be computed as points. The
 server-side entities represented by UUIDs that the players have to retrieve from its corresponding
 Resource Server. 
 
+![Alt text](https://raw.github.com/dmoranj/catan-servers/master/img/CatanServersArchitecture.png "Architecture")
+
 Each Resource Server has to be accesed in a different particular way: some servers
 should be accessed using HTTP, others using SocketIO, or other protocols... Each time a resource 
 server is accessed, a resource UUID is provided. When the player has enough UUIDs of a particular 

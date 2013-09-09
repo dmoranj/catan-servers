@@ -38,17 +38,6 @@ flag to true). The edit mode is intended to debug and design the game server and
 initial data before starting the game. It should be set to false before starting the game. The
 operations that are disabled with this flag are marked with the (*) symbol.
 
-    app.get('/design', routes.listDesigns);
-    app.get('/house', routes.listHouses);
-    app.post('/house', routes.createHouse);
-    app.get('/resource/server', routes.listServers);
-
-    if (config.endpoint.edit) {
-        app.get('/resource', routes.getResources);
-        app.delete('/design/:id', routes.deleteDesign);
-        app.post('/design', routes.createDesign);
-    }
-
 * GET /design
 
 Returns a list of the available designs.

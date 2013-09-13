@@ -10,6 +10,8 @@ to build different types of houses, that will in turn be computed as points. The
 server-side entities represented by UUIDs that the players have to retrieve from its corresponding
 Resource Server. 
 
+![Alt text](https://raw.github.com/dmoranj/catan-servers/master/img/CatanServersArchitecture.png "Architecture")
+
 Each Resource Server has to be accesed in a different particular way: some servers
 should be accessed using HTTP, others using SocketIO, or other protocols... Each time a resource 
 server is accessed, a resource UUID is provided. When the player has enough UUIDs of a particular 
@@ -35,17 +37,6 @@ The API has some operations that can only be used in Edit Mode (setting the conf
 flag to true). The edit mode is intended to debug and design the game server and to setup the
 initial data before starting the game. It should be set to false before starting the game. The
 operations that are disabled with this flag are marked with the (*) symbol.
-
-    app.get('/design', routes.listDesigns);
-    app.get('/house', routes.listHouses);
-    app.post('/house', routes.createHouse);
-    app.get('/resource/server', routes.listServers);
-
-    if (config.endpoint.edit) {
-        app.get('/resource', routes.getResources);
-        app.delete('/design/:id', routes.deleteDesign);
-        app.post('/design', routes.createDesign);
-    }
 
 * GET /design
 

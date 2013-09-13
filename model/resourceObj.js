@@ -4,7 +4,12 @@ var mongoose = require('mongoose'),
 
 var Resource = new Schema({
     id: String,
-    name: String
+    name: String,
+    retrieved: Boolean
 });
+
+Resource.statics.findAndModify = function (query, sort, doc, options, callback) {
+    return this.collection.findAndModify(query, sort, doc, options, callback);
+}
 
 module.exports = db.model('Resource', Resource);

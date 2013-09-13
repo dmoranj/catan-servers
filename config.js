@@ -7,8 +7,9 @@ config.endpoint = {
 };
 
 config.woodServer = {
-    port: 3001,
-    period: 5000
+    port: 3003,
+    period: 5000,
+    type: "Piedra"
 };
 
 config.mongo = {

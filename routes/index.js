@@ -1,6 +1,7 @@
 var houseService = require("../lib/houseService"),
     resourceService = require("../lib/resourceService"),
     restTools = require("../lib/restTools");
+    marketService = require("../lib/marketService");
 
 exports.listDesigns = function(req, res) {
     houseService.listDesigns(function (error, designResult) {
@@ -80,3 +81,28 @@ exports.createDesign = function(req, res){
             }
         });
 };
+
+exports.createMerchant = function(req, res) {
+    marketService.createMerchant(
+        req.body.name,
+        req.body.url,
+        function (error, createdMerchant) {
+            if (error) {
+                res.json(500, restTools.generateError("006", error));
+            } else {
+                res.json(200, createdMerchant);
+            }
+        }
+    );
+}
+
+exports.listMerchants = function(req, res) {
+    marketService.listMerchants(function (error, merchantResults) {
+            if (error) {
+                res.json(500, restTools.generateError("003", error));
+            } else {
+                res.json(200, merchantResults);
+            }
+        }
+    );
+}

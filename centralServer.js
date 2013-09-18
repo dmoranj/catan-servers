@@ -17,6 +17,8 @@ function signupRoutes() {
     app.get('/house', routes.listHouses);
     app.post('/house', routes.createHouse);
     app.get('/resource/server', routes.listServers);
+    app.get('/merchant', routes.listMerchants);
+    app.post('/merchant', routes.createMerchant);
 
     if (config.endpoint.edit) {
         app.get('/resource', routes.getResources);

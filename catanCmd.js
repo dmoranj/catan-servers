@@ -7,6 +7,7 @@ var
     request = require('request'),
     config = require('./config.js'),
     resources = require('./lib/resourceService'),
+    market = require('./lib/marketService'),
     houses = require('./lib/houseService');
 
 function showError(message) {
@@ -55,10 +56,18 @@ program
 
 program
     .command('createServer [resourceName] [url] [description]')
-    .description('\n\nThis command register a new Resource Server in the system, to be used in the Resource' +
+    .description('\n\nThis command register a new Resource Server in the system, to be used in the Resource\n' +
         'Server Directory\n\n')
     .action(function (resourceName, url, description) {
         resources.createServer(resourceName, url, description, showCallback);
+    });
+
+program
+    .command('createMerchant [merchantName] [url]')
+    .description('\n\nThis command register a new Merchant in the system, so they can find themselves to initiate\n' +
+        ' the negotiations\n\n')
+    .action(function (merchantName, url) {
+        market.createMerchant(merchantName, url, showCallback);
     });
 
 program
@@ -87,6 +96,13 @@ program
     .description('\n\nReturn a list of all the available Resource Servers\n\n')
     .action(function () {
         resources.listServers(showCallback);
+    });
+
+program
+    .command('listMerchants')
+    .description('\n\nReturn the list of available merchants\n\n')
+    .action(function () {
+        market.listMerchants(showCallback);
     });
 
 program
@@ -144,6 +160,21 @@ program
             } else {
                 showOutput({
                     numberOfRemovals: removedResourceServers
+                });
+            }
+        });
+    });
+
+program
+    .command('removeMerchant [id]')
+    .description('\n\nRemove the selected Merchant from the DB\n\n')
+    .action(function (id) {
+        market.removeMerchant(id, function (error, removedMerchants) {
+            if (error) {
+                showError(error);
+            } else {
+                showOutput({
+                    numberOfRemovals: removedMerchants
                 });
             }
         });

@@ -1,7 +1,8 @@
 catan-servers
 =============
 
-Backend for a didactic game aimed to teach Node.js.
+Catan-servers is the backend for a didactic game aimed to teach different communication and process synchronization
+technologies. 
 
 Description
 ---------------
@@ -17,7 +18,7 @@ should be accessed using HTTP, others using SocketIO, or other protocols... Each
 server is accessed, a resource UUID is provided. When the player has enough UUIDs of a particular 
 resource, he can buy the houses that need this resource. For example: accessing the Wood Server
 three times using HTTP will provide three different Wood UUIDS... using this three UUIDs, the player
-can connect to the central server to buy a Hut (that require 3 Woods to be completed). The resources
+can connect to the Central Server to buy a Hut (that require 3 Woods to be completed). The resources
 used will then be invalidated in the server, so each UUID can only be used once. 
 
 Requirements
@@ -26,10 +27,23 @@ The server requires the following software to be installed and working:
 - Node 0.10.*
 - MongoDB 2.2.4
 
-Configuration
-----------------
+Configuration and installation
+---------------------------------
 The server's configuration can be found in the config.js file. The default values should be right
-for a local installation.
+for a local installation. This same file contains the server configuration for both the Central Server
+and all of the Resource Servers.
+
+The only installation required is to clone this repository. All the servers can be executed from the
+repository root.
+
+The Central Server, used to discover other agents of the game, to retrieve the lists of designs and 
+to build the houses, can be started with the command:
+
+    node centralServer.js
+
+Each resource server has a separate init file, but the same config. For details on each server, refer
+to the server's chapter in this documentation.
+
 
 Server API
 ---------------
@@ -78,6 +92,20 @@ Gets a list of the available resource servers, along with their URLs and the pro
 * GET /resource (*)
 
 Gets a list of the actual resources generated in the server (for debugging purposes only).
+
+* GET /merchant
+
+Returns the list of all the merchants registered in the system.
+
+* POST /merchant
+
+Register a new merchant in the server.
+
+
+* DELETE /merchant/:id (*)
+
+Unregister the given merchant.
+
 
 Command line tool
 -------------------
@@ -165,14 +193,17 @@ Data Model
 
 * Resource Server
 
+* Merchant
+
 
 Resource Servers SDK
 ----------------------
 Resource Servers communicate with the central server using the MongoDB database. In order to
-ease the programming of the resource servers, they should be provideded as new entry points of
+ease the programming of the resource servers, they should be provided as new entry points of
 this particular project. Thus, all the data access libs inside /lib can be used to both
 generate and retrieve resources. To generate new resources, use the resourceService.create()
 function. To extract resources from the DB and return them to the users, use the
 resourceService.findAndRemove() function, so the retrieval and delete operation is atomic.
 Provided you use the existing libs, no more requirements are needed to create a Resource Server;
 simply register it in the Resource Server database and all the players shoul be able to use it.
+

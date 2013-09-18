@@ -50,6 +50,7 @@ exports.createHouse = function(req, res){
         function (error, designResult) {
             if (error) {
                 res.json(500, restTools.generateError("004", error));
+                console.log(error);
             } else {
                 res.json(200, designResult);
             }

@@ -57,10 +57,10 @@ function start() {
     });
 }
 
-start();
-setInterval(addWood, config.woodServer.period);
-
-
-
-
-
+resources.createServer(config.woodServer.type,
+    config.woodServer.host + "/" +   config.woodServer.port,
+    config.woodServer.description,
+    function (error) {
+        start();
+        setInterval(addWood, config.woodServer.period);
+    });

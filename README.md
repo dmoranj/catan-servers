@@ -207,3 +207,97 @@ resourceService.findAndRemove() function, so the retrieval and delete operation 
 Provided you use the existing libs, no more requirements are needed to create a Resource Server;
 simply register it in the Resource Server database and all the players shoul be able to use it.
 
+
+Available Resource Servers
+---------------------------
+### Wood (HTTP)
+
+The resources for this server are granted via HTTP. A HTTP GET request to the /chop path of the 
+server will return: an object containing the resource ID 
+
+    {
+      name: "Madera",
+      id: "d51de2c4-8518-47ab-9a4c-8cc859f5f033"
+    }
+
+or an error if there is no wood to chop
+
+    {
+      code: "Internal code of the error",
+      message: "Error message for human beings"
+    }
+
+
+### Steel (Socket.IO)
+
+The resources of this server have to be negotiated under Socket.IO. The "Clown algorithm" to get them has been summarized
+in the following diagram.
+
+
+This is the detailed description of each of the steps:
+
+1. When a new Socket.IO connection is received, the server sends blank "¡Hola Don Pepito!" message to the Client.
+2. The client replies emitting an "¡Hola Don Jose!" message. This message can be repeated as many times as needed
+and each time it is repeated, it resets the internal state for the client to this point in the protocol (use it for
+errors, for example).
+3. The server replies emiiting a "¿Pasó usted por mi casa?" message, indicating a house address in the payload. 
+4. The client has to visit the house in the indicated address, by sending an HTTP POST message to the HTTP endpoint 
+of the server with path "/casa" and a payload consisting of a JSON object with a single property "address" with the 
+address value provided before. On success, the server will return:
+
+
+    {
+      message: "Wellcome to the house. This is your certificate.",
+      certificate: "a978a90e-bdf2-4cc8-a4b3-54b19e822dbe"
+    }
+
+5. The client will emit a "Por su casa yo pasé" message to the server, indicating the certificate in the payload, with 
+the following syntax:
+
+
+    {
+      confirmation: "a978a90e-bdf2-4cc8-a4b3-54b19e822dbe"
+    }
+
+6. The server will check the certificate for validity. If it's correct, it will reply with a "¿Vio usted a mi abuela?"
+event, indicating the name of the grandmother in the payload in this way:
+
+
+    {
+      grandMaName: "49f2c370-262f-4771-bbbb-ae64a0618954"
+    }
+
+7. The client will have to visit the specified grandmother in the HTTP endpoint, by posting an HTTP POST message to the
+"/abuela" path, with the syntax indicated in the code below. The answer to this request will be a certificate similar 
+to the one received in step 4.
+
+
+    {
+      granMaName: "49f2c370-262f-4771-bbbb-ae64a0618954"
+    }
+
+8. The client will issue an "A su abuela yo la vi" message to the server, with the provided message as the payload:
+
+
+    {
+      grandMaName: "8a87e576-fbe8-4bce-8016-c75f3bd6a7c3"
+    }
+
+9. The server will answer with an "¡Adios Don Pepito!" message, with the desired resource in the body or an error if
+the steel is currently depleted:
+
+
+    {
+      resource: "5a4c3971-131e-4b19-aa18-0ea562f16b64",
+      resourceType: "Metal"
+    }
+
+
+10. [Optional] The server will wait for the client to close the connection emitting an "¡Adios Don Jose!". This step
+is not required, but it will be rude of you not to follow it (and I'm sure your mother told you to be polite).
+
+### Cement (RabbitMQ)
+
+
+
+

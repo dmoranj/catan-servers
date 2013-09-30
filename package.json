@@ -10,8 +10,10 @@
     "jade": "*",
     "node-uuid": "*",
     "mongoose" : "*" ,
+    "socket.io": "*",
     "async": "*",
     "commander": "*",
-    "request": "*"
+    "request": "*",
+    "redis": "*"
   }
 }

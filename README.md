@@ -245,52 +245,58 @@ errors, for example).
 of the server with path "/casa" and a payload consisting of a JSON object with a single property "address" with the 
 address value provided before. On success, the server will return:
 
-
+ ```javascript
     {
       message: "Wellcome to the house. This is your certificate.",
       certificate: "a978a90e-bdf2-4cc8-a4b3-54b19e822dbe"
     }
-
+ ```
+ 
 5. The client will emit a "Por su casa yo pasé" message to the server, indicating the certificate in the payload, with 
 the following syntax:
 
-
+ ```javascript
     {
       confirmation: "a978a90e-bdf2-4cc8-a4b3-54b19e822dbe"
     }
+ ```
 
 6. The server will check the certificate for validity. If it's correct, it will reply with a "¿Vio usted a mi abuela?"
 event, indicating the name of the grandmother in the payload in this way:
 
-
+ ```javascript
     {
       grandMaName: "49f2c370-262f-4771-bbbb-ae64a0618954"
     }
-
+ ```
+ 
 7. The client will have to visit the specified grandmother in the HTTP endpoint, by posting an HTTP POST message to the
 "/abuela" path, with the syntax indicated in the code below. The answer to this request will be a certificate similar 
 to the one received in step 4.
 
-
+ ```javascript
     {
       granMaName: "49f2c370-262f-4771-bbbb-ae64a0618954"
     }
-
+ ```
+ 
 8. The client will issue an "A su abuela yo la vi" message to the server, with the provided message as the payload:
 
-
+ ```javascript
     {
       grandMaName: "8a87e576-fbe8-4bce-8016-c75f3bd6a7c3"
     }
+ ```    
 
 9. The server will answer with an "¡Adios Don Pepito!" message, with the desired resource in the body or an error if
 the steel is currently depleted:
 
-
+ ```javascript
     {
       resource: "5a4c3971-131e-4b19-aa18-0ea562f16b64",
       resourceType: "Metal"
     }
+ ```    
 
 
 10. [Optional] The server will wait for the client to close the connection emitting an "¡Adios Don Jose!". This step

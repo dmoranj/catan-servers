@@ -10,7 +10,7 @@ config.woodServer = {
     host: "http://localhost",
     port: 3003,
     period: 4000,
-    type: "Piedra"
+    type: "Madera"
 };
 
 config.woodServer.description = "Simple HTTP server without authentication. Can be " +
@@ -21,7 +21,7 @@ config.steelServer = {
     port: 3005,
     socketIOPort: 3004,
     period: 4000,
-    type: "Steel"
+    type: "Metal"
 };
 
 config.mongo = {

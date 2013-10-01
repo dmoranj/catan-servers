@@ -5,6 +5,7 @@
 
 var express = require('express'),
     routes = require('./routes'),
+    api = require('./routes/api'),
     config = require('./config'),
     resources = require('./lib/resourceService'),
     http = require('http'),
@@ -19,6 +20,8 @@ function signupRoutes() {
     app.get('/resource/server', routes.listServers);
     app.get('/merchant', routes.listMerchants);
     app.post('/merchant', routes.createMerchant);
+
+    app.get('/api/ranking', api.ranking);
 
     if (config.endpoint.edit) {
         app.get('/resource', routes.getResources);

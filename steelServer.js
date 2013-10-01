@@ -151,7 +151,7 @@ function initiateSocketIO() {
                 ackAbuela: null
             };
 
-        socket.emit('¡Hola Don Pepito!', { hello: 'world' });
+        socket.emit('¡Hola Don Pepito!', {});
 
         socket.on('¡Hola Don Jose!', askForHouseVisitingCertificate.bind(connectionState, socket));
 

@@ -9,10 +9,12 @@
     "express": "3.0.0rc3",
     "jade": "*",
     "node-uuid": "*",
-    "mongoose": "*",
+    "mongoose" : "*" ,
+    "socket.io": "*",
     "async": "*",
     "commander": "*",
     "request": "*",
+    "redis": "*",
     "cors": "~1.0.1",
     "underscore": "~1.5.2"
   }

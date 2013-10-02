@@ -5,6 +5,7 @@
 
 var express = require('express'),
     routes = require('./routes'),
+    api = require('./routes/api'),
     config = require('./config'),
     resources = require('./lib/resourceService'),
     http = require('http'),
@@ -20,6 +21,8 @@ function signupRoutes() {
     app.get('/merchant', routes.listMerchants);
     app.post('/merchant', routes.createMerchant);
 
+    app.get('/api/ranking', api.ranking);
+
     if (config.endpoint.edit) {
         app.get('/resource', routes.getResources);
         app.delete('/design/:id', routes.deleteDesign);
@@ -33,6 +36,7 @@ function start() {
         app.use(express.logger('dev'));
         app.use(express.bodyParser());
         app.use(express.methodOverride());
+        app.use(require('cors')());
         app.use(app.router);
         app.use(express.static(path.join(__dirname, 'public')));
     });

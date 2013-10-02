@@ -155,7 +155,7 @@ function initiateSocketIO() {
 
         socket.on('¡Hola Don Jose!', askForHouseVisitingCertificate.bind(connectionState, socket));
 
-        socket.on("Por su casa yo pasé", checkHouseCertificate.bind(connectionState, socket));
+        socket.on("Por su casa yo pase", checkHouseCertificate.bind(connectionState, socket));
 
         socket.on("A su abuela yo la vi", granmaSightConfirmation.bind(connectionState, socket));
 

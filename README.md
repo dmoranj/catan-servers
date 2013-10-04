@@ -60,7 +60,7 @@ to the server's chapter in this documentation.
 
 
 <a name="serverapi" />
-Server API
+Central Server API
 ---------------
 The API has some operations that can only be used in Edit Mode (setting the config.endpoint.edit
 flag to true). The edit mode is intended to debug and design the game server and to setup the
@@ -251,9 +251,44 @@ Example response:
 
 Returns the list of all the merchants registered in the system.
 
+Example response:
+ ```javascript
+[
+  {
+    "url": "http://173.31.62.88:5023",
+    "name": "dmj",
+    "id": "31dc2e62-f63e-443a-a383-04690dc24c02",
+    "_id": "524e8b8f69b656784c000001"
+  },
+  {
+    "url": "http://19.231.111.68:5023",
+    "name": "rzq",
+    "id": "0b8882f3-40a8-4b94-bdc6-84cf7570dd80",
+    "_id": "524e8c1669b656784c000002"
+  }
+]
+ ```
+
 #### POST /merchant
 
 Register a new merchant in the server.
+
+Example request:
+ ```javascript
+{
+    "name": "dmj",
+    "url": "http://173.31.62.88:5023"
+}
+ ```
+
+Example response:
+ ```javascript
+{
+  "url": "http://173.31.62.88:5023",
+  "name": "dmj",
+  "id": "31dc2e62-f63e-443a-a383-04690dc24c02"
+}
+ ```
 
 #### DELETE /merchant/:id (*)
 

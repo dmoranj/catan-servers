@@ -348,10 +348,12 @@ The following sections explain the API with more detail.
 All error messages will be reported with a JSON body specifing the nature of the problem. The scheme of that body
 will be the following:
 
+ ```javascript
 {
     code: 4501,
     message: "The types of the resources didn't match the resource price"
 }
+ ```
 
 The code should be an internal code for that particular type of error. The message is meant to be a human-readable 
 message, so it doesn't need to have any particular syntax.
@@ -359,6 +361,7 @@ message, so it doesn't need to have any particular syntax.
 #### GET /catalog
 Retrieve the list of all catalog items and their prices.
 
+ ```javascript
 [
     {
         id: "570ba3a5-b24b-4a7f-4a7f-f8e6d70ba615",
@@ -376,19 +379,23 @@ Retrieve the list of all catalog items and their prices.
         type: "Rubi"
     }
 ]
+ ```
 
 #### GET /catalog/:id
 Retrieve the specificied catalog Item, indicating how much stock there is for that item.
 
+ ```javascript
 {
     price: ["Madera", "Madera", "Piedra"],
     type: "Circonio",
     stock: 12
 }
+ ```
 
 #### POST /catalog/:id/buy
 Buy one item of the catalog. The buyer must include the UUIDs and types of the products in the payload:
 
+ ```javascript
 {
     bill: [
         {
@@ -401,6 +408,7 @@ Buy one item of the catalog. The buyer must include the UUIDs and types of the p
         }
     ]
 }
+ ```
 
 If the payload is incorrect, the Merchant will reply with a status code 400 and an error message indicating what was
 the nature of the problem (see format above).
@@ -408,19 +416,23 @@ the nature of the problem (see format above).
 If the payload is correct, and there is enough stock of the traded good, the merchant will reply with the product and 
 a 200 OK status:
 
+ ```javascript
 {
   type: "Plutonio",
   value: "17a52cb2-67ec-42d8-a904-b0fc2e657d80"
 }
+ ```
 
 #### POST /catalog
 Creates a new entry in the catalog, indicating the type of resource it is going to be traded and the amount and type
 of other resources needed to perform a transaction. The body of the request should be like the following:
 
+ ```javascript
 {
     price: ["Madera", "Madera", "Piedra"],
     type: "Circonio"
 }
+ ```
 
 If the new resource is created, a 200OK message will be returned.
 

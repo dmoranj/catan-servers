@@ -4,6 +4,18 @@ catan-servers
 Catan-servers is the backend for a didactic game aimed to teach different communication and process synchronization
 technologies. 
 
+* [Description](#description)
+* [Requirements](#requirements)
+* [Configuration and installation](#configurationandinstallation)
+* [Server API](#serverapi)
+* [Command line tool](#commandlinetool)
+* [Data Model](#datamodel)
+* [Resource Servers SDK](#resourceserversdk)
+* [Available Resource Servers](#availableresourceservers)
+* [Merchant API](#merchantapi)
+
+
+<a name="description" />
 Description
 ---------------
 Catan Servers is a resource gathering game, where the players have to gather resources in order
@@ -21,12 +33,14 @@ three times using HTTP will provide three different Wood UUIDS... using this thr
 can connect to the Central Server to buy a Hut (that require 3 Woods to be completed). The resources
 used will then be invalidated in the server, so each UUID can only be used once. 
 
+<a name="requirements" />
 Requirements
 ---------------
 The server requires the following software to be installed and working:
 - Node 0.10.*
 - MongoDB 2.2.4
 
+<a name="configurationandinstallation" />
 Configuration and installation
 ---------------------------------
 The server's configuration can be found in the config.js file. The default values should be right
@@ -45,6 +59,7 @@ Each resource server has a separate init file, but the same config. For details 
 to the server's chapter in this documentation.
 
 
+<a name="serverapi" />
 Server API
 ---------------
 The API has some operations that can only be used in Edit Mode (setting the config.endpoint.edit
@@ -107,6 +122,7 @@ Register a new merchant in the server.
 Unregister the given merchant.
 
 
+<a name="commandlinetool" />
 Command line tool
 -------------------
 The server has a command line tool, called catanCmd, in order to test and debug features and to prepare the initial
@@ -183,6 +199,7 @@ conditions of a game (e.g. creating designs and resources). The followin help ou
     -V, --version  output the version number
 
 
+<a name="datamodel" />
 Data Model
 ----------------------
 * Resource
@@ -196,6 +213,7 @@ Data Model
 * Merchant
 
 
+<a name="resourceserversdk" />
 Resource Servers SDK
 ----------------------
 Resource Servers communicate with the central server using the MongoDB database. In order to
@@ -208,6 +226,7 @@ Provided you use the existing libs, no more requirements are needed to create a 
 simply register it in the Resource Server database and all the players shoul be able to use it.
 
 
+<a name="availableresourceservers" />
 Available Resource Servers
 ---------------------------
 ### Wood (HTTP)
@@ -304,6 +323,8 @@ is not required, but it will be rude of you not to follow it (and I'm sure your 
 
 ### Cement (RabbitMQ)
 
-
+<a name="merchantapi" />
+Merchant API
+---------------------------
 
 

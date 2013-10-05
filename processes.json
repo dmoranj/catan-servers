@@ -1,0 +1,22 @@
+[
+  {
+    "name"      : "central",
+    "script"    : "./centralServer.js",
+    "instances" : "1"
+  },
+  {
+    "name"      : "wood",
+    "script"    : "./woodServer.js",
+    "instances" : "1"
+  },
+  {
+    "name"      : "cement",
+    "script"    : "./cementServer.js",
+    "instances" : "1" 
+  },
+  {
+    "name"      : "steel",
+    "script"    : "./steelServer.js",
+    "instances" : "1"
+  }
+]

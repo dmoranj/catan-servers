@@ -39,6 +39,8 @@ Requirements
 The server requires the following software to be installed and working:
 - Node 0.10.*
 - MongoDB 2.2.4
+- Redis
+- RabbitMQ
 
 <a name="configurationandinstallation" />
 Configuration and installation
@@ -47,13 +49,32 @@ The server's configuration can be found in the config.js file. The default value
 for a local installation. This same file contains the server configuration for both the Central Server
 and all of the Resource Servers.
 
-The only installation required is to clone this repository. All the servers can be executed from the
-repository root.
+This project uses [pm2](https://github.com/Unitech/pm2) to launch the CentralServer and all its resource servers.
+The prerequisite is to install pm2 globally
 
-The Central Server, used to discover other agents of the game, to retrieve the lists of designs and 
-to build the houses, can be started with the command:
+```bash
+npm install -g pm2
+```
 
-    node centralServer.js
+After that, execute
+```bash
+npm install
+```
+to install all project dependencies
+
+When all is done, simply type
+```bash
+npm start
+```
+or
+```bash
+pm2 start processes.json
+```
+
+to start all the needed infrastructure
+
+Please, refer to [pm2 documentation](https://github.com/Unitech/pm2) to learn how to manage
+all the processes created
 
 Each resource server has a separate init file, but the same config. For details on each server, refer
 to the server's chapter in this documentation.

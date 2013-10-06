@@ -1,9 +1,9 @@
 {
-  "name": "application-name",
+  "name": "catan-servers",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "pm2 start processes.json"
   },
   "dependencies": {
     "express": "3.0.0rc3",
@@ -16,7 +16,7 @@
     "request": "*",
     "redis": "*",
     "cors": "~1.0.1",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
     "amqp": "0.1.x"
   }
 }

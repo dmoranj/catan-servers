@@ -517,6 +517,19 @@ is not required, but it will be rude of you not to follow it (and I'm sure your 
 
 ### Cement (RabbitMQ)
 
+The resources for this server are granted via RabbitMQ.
+
+Clients must subscribe to the config.cementServer.queueName ('cemento' by default) in order to receive cement resource.
+Each Cement resource is a JSON object with this format:
+
+    {
+      name: "Cemento",
+      id: "f89a4e4e-fb8c-480a-923b-8ea50a0d9a75"
+    }
+
+If multiple clients are connected to the queue, a Round-Robin alghoritm is used since this is a 'Work Queue'.
+See: http://www.rabbitmq.com/getstarted.html & http://www.rabbitmq.com/tutorials/tutorial-two-python.html
+
 <a name="merchantapi" />
 Merchant API
 ---------------------------

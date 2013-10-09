@@ -59,7 +59,7 @@ exports.createHouse = function(req, res){
 };
 
 exports.deleteDesign = function(req, res){
-    houseService.removeDesign(req.body.id, function (error, designResult) {
+    houseService.removeDesign(req.params.id, function (error, designResult) {
         if (error) {
             res.json(500, restTools.generateError("005", error));
         } else {
@@ -69,7 +69,7 @@ exports.deleteDesign = function(req, res){
 };
 
 exports.createDesign = function(req, res){
-    houseService.listHouses(
+    houseService.createDesign(
         req.body.type,
         req.body.resources,
         req.body.value,

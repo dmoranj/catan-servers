@@ -46,8 +46,8 @@ program
 program
     .command('createHouse [login] [designId] [resourceList]')
     .description('\n\nThis command buys a new house for the user indicated in the login. The resource used to \n' +
-        'build the house must exist, and will be deleted as usual once the house is constructed. The resources\n' +
-        'should serialized as a comma-separated list of the resource IDs\n\n')
+        'build the house must exist, and will be deleted as usual once the house is constructed.\n' +
+        'The resources should be serialized as a comma-separated list of the resource IDs\n\n')
     .action(function (login, design, resourceList) {
         var resources = resourceList.split(',');
 

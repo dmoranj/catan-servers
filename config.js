@@ -54,6 +54,9 @@ config.steelServer = {
     type: "Metal"
 };
 
+config.steelServer.description = "Socket IO server that provides " + config.steelServer.type + ". To mine" +
+    " it, follow the protocol described in the documentation."
+
 config.mongo = {
     host: "localhost",
     db: 'catan-servers',

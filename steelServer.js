@@ -140,7 +140,7 @@ function granmaSightConfirmation (socket, data) {
  */
 function initiateSocketIO() {
     var io = require('socket.io').listen(config.steelServer.socketIOPort);
-    io.set('log level', 3);
+    io.set('log level', 1);
 
     io.sockets.on('connection', function (socket) {
         var connectionState = {

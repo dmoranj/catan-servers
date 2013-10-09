@@ -47,7 +47,7 @@ function askForHouseVisitingCertificate (socket, data) {
 
     connection.hset("acks-casa", this.uuidCasa, this.ackCasa);
 
-    socket.emit('¿Pasó usted por mi casa?', {
+    socket.emit('¿Paso usted por mi casa?', {
         address: this.uuidCasa
     });
 }
@@ -67,7 +67,7 @@ function checkHouseCertificate (socket, data) {
             message: "Tried to access stage 2 from stage other than 1",
             action: "Restart handshake"
         });
-    } else if (data && data.confirmation && data.confirmation == this.ackCasa) {
+    } else if (data && data.certificate && data.certificate == this.ackCasa) {
         this.uuidAbuela = uuid.v4(),
             this.ackAbuela = uuid.v4();
 
@@ -101,7 +101,7 @@ function granmaSightConfirmation (socket, data) {
             message: "Tried to access stage 3 from stage other than 2",
             action: "Restart handshake"
         });
-    } else if (data && data.grandMaName && data.grandMaName == this.ackAbuela) {
+    } else if (data && data.certificate && data.certificate == this.ackAbuela) {
         resources.findAndRemove(config.steelServer.type, function (error, removedSteel) {
             if (error) {
                 socket.emit('Error', {
@@ -140,7 +140,7 @@ function granmaSightConfirmation (socket, data) {
  */
 function initiateSocketIO() {
     var io = require('socket.io').listen(config.steelServer.socketIOPort);
-    io.set('log level', 1);
+    io.set('log level', 3);
 
     io.sockets.on('connection', function (socket) {
         var connectionState = {
@@ -197,15 +197,15 @@ function visitCasa(req, res) {
  * Grants the Granma Visit Certificate for the selected granma.The certificate is retrieved from Redis.
  */
 function greetGranma(req, res) {
-    if (!req.body.granMaName) {
+    if (!req.body.grandMaName) {
         res.json(400, {
             message: "No Granma name was given. No confirmation will be returned."
         });
     } else {
-        connection.hget("acks-abuela", req.body.granMaName, function (error, data) {
+        connection.hget("acks-abuela", req.body.grandMaName, function (error, data) {
             if (error) {
                 res.json(500, {
-                    message: "There was an error looking for Granma " + req.body.granMaName
+                    message: "There was an error looking for Granma " + req.body.grandMaName
                 });
             } else if (data) {
                 res.json(200, {

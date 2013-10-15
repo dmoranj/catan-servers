@@ -9,8 +9,16 @@ config.endpoint = {
 config.woodServer = {
     host: "http://localhost",
     port: 3003,
-    period: 4000,
+    period: 500,
     type: "Madera"
+};
+
+config.goldServer = {
+    host: "http://localhost",
+    port: 3008,
+    period: 5000,
+    type: "Oro",
+    prerequisites: 4
 };
 
 config.cementServer = {
@@ -50,7 +58,7 @@ config.steelServer = {
     host: "http://localhost",
     port: 3005,
     socketIOPort: 3004,
-    period: 4000,
+    period: 500,
     type: "Metal"
 };
 

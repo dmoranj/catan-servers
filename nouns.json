@@ -1,0 +1,33 @@
+{
+    "prefix": [
+        "Mega", "Micro", "Super", "Meta", "Hipno", "Tera", "Uber", "Femto", "Extra", "Tecno", "Neo",
+        "Hipo", "Hiper", "Femto", "Ato", "Nano", "Peta", "Hexa", "Ex", "Medio", "Sub", "Supra", "Auto",
+        "Servo"
+    ],
+
+    "core": [
+        "sapo", "teclado", "castillo", "ratón", "rododendro", "calamar", "señorito", "ojo", "elevador",
+        "escudo", "abrigo", "teléfono", "monitor", "mueble", "pelo", "árbol", "monte", "suelo", "universo",
+        "enanito", "cielo", "cable", "pie", "zapato", "bolso", "icono", "concepto", "repollo", "platano",
+        "cloud", "escarabajo", "burro", "elefante", "ñú", "hippie", "retor", "mendigo", "paralelepípedo",
+        "platanero", "atolladero", "orco", "tenedor", "cuchillo", "monóculo", "humo", "tractor", "azadón",
+        "granjero", "gañán", "lacayo", "mayordomo", "párpado", "dragón", "lagarto", "cocodrilo", "papel",
+        "cuaderno", "jamón", "ciervo", "hipopótamo", "gramófono", "autogiro", "hechicero", "brujo",
+        "ilusionista", "bastón", "palillo", "destornillador", "martillo", "neumático", "lácteo", "queso",
+        "hongo", "papiloma", "virus", "tejido", "jersey", "pantalón", "calcetín", "cinturón", "tajalapiz",
+        "lapiz", "alfabeto", "disco duro", "enchufe", "alargador"
+    ],
+
+    "sufix": [
+        "del mal", "verde", "rojo", "negro", "amarillo", "del bien", "bendito", "extraño", "melífluo",
+        "tecnológico", "ratonero", "extravagante", "deprimido", "apocopado", "tímido", "apestoso",
+        "gigante", "gargantuesco", "epistemológico", "epatado", "veterotestamentario", "monádico",
+        "bajito", "mediocre", "apodíptico", "aporético", "viscoso", "aterrador", "esperpéntico",
+        "epiléptico", "asustado", "confiado", "blanquecino", "ardiente", "gélido", "noctámbulo",
+        "optimista", "romántico", "perseverante", "aterrado", "administrativo", "burocrático",
+        "mágico", "infernal", "hermético", "académico", "endémico", "enfermizo", "barbudo",
+        "lampiño", "etéreo", "incorpóreo", "espiritual", "mágico", "del montón", "de Soria",
+        "de Albacete", "de Teruel", "gaditano", "maño", "asturiano", "payés", "bengalí",
+        "vallisoletano", "madrileño", "barcelonés"
+    ]
+}

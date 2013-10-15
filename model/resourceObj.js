@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 var Resource = new Schema({
     id: String,
     name: String,
-    retrieved: Boolean
+    retrieved: Boolean,
+    rnd: { type: [Number], index: true }
 });
 
 Resource.statics.findAndModify = function (query, sort, doc, options, callback) {

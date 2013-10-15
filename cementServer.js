@@ -56,7 +56,7 @@ var amqp = require('amqp'),
         var send = false;
         this.connections.forEach(function(connection) {
           if(connection && !send) {
-            connection.publish(config.cementServer.queueName, JSON.stringify(data));
+            connection.publish(config.cementServer.queueName, data);
             send = true;
           }
         });

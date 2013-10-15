@@ -565,6 +565,68 @@ Each Cement resource is a JSON object with this format:
 If multiple clients are connected to the queue, a Round-Robin alghoritm is used since this is a 'Work Queue'.
 See: http://www.rabbitmq.com/getstarted.html & http://www.rabbitmq.com/tutorials/tutorial-two-python.html
 
+### Gold (Merchant API)
+
+The Gold Resource Server is intended to be used for trading goods. It provides the consumer with two different 
+resources:
+
+- First, it provides Things of all kinds. To get a Thing, make a request to the /cajondesastre endpoint,
+and you will receive a payload with a randomly chosen Thing like the following: 
+
+ ```js
+{
+  "name": "Suprahipopótamo monádico",
+  "id": "dade5029-8761-4ab4-9e00-039c72713755"
+}
+ ```
+ 
+- It also provide Gold resources, but the gold can only retrieved by paying a specific bill. Making a GET request to 
+the /comproOro path, a bill with the price of that specific piece of Gold will be retrieved:
+
+ ```js
+{
+  "billID": "ebb2f73b-948f-4bd9-84cf-83ce0f3c2d25",
+  "price": [
+    "Subgranjero ardiente",
+    "Microdragón espiritual",
+    "Metahippie viscoso",
+    "Hipnopapiloma gargantuesco"
+  ]
+}
+ ```
+ 
+To buy the Gold piece, send a POST message with a payload containing the ID's of the retrieved Things and the BillID:
+
+ ```js
+{
+  "billID": "ffa69478-a930-4e89-abeb-daf8b362081e",
+  "resources": [ 
+    "987334c8-5ccd-44ac-9de7-1ea70f21f521",
+    "7c7d4318-e529-43d9-b55f-b796304b6530",
+    "c1954759-5b10-4b04-82c6-583c8189f5ef",
+    "b253a789-57d1-48fa-8e98-4a194abb3b05"
+  ]
+}
+ ```
+ 
+If the resources are right, the Gold piece will be collected, and the Gold resource will be retrieved, with a 200 response
+code:
+
+ ```js
+{
+  "name": "Oro",
+  "id": "029d4de5-43d9-4ab4-5ccd-9f8185583cef"
+}
+ ```
+ 
+If there is any problem, a 40x or 50x code will be returned, with a payload with a human readable message indicating the
+cause of failure.
+
+NOTE: there is only a copy of each thing so, if there is more than one merchant drawing resources from the server, you
+will not be able to retrieve all the Things for yourself; so you better implement the Merchant API to change Things 
+with your colleagues.
+
+
 <a name="merchantapi" />
 Merchant API
 ---------------------------

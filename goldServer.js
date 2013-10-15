@@ -223,13 +223,12 @@ function buyGold(req, res) {
 
 function getThings(req, res) {
     Resource
-        .find({
+        .findOne({
             rnd: {$gte: Math.random()}
         })
         .nin(['Oro', 'Madera', 'Cemento', 'Metal'])
         .sort({rnd:1})
-        .select({_id: 0, __v: 0, rnd: 0})
-        .limit(1)
+        .select({_id: 0, __v: 0, rnd: 0, retrieved: 0})
         .exec(function (error, thing) {
             if (error) {
                 res.json(500, {
@@ -251,7 +250,7 @@ function signupRoutes(appServer) {
 
 function start() {
     app.configure(function () {
-        app.set('port', process.env.PORT || config.woodServer.port);
+        app.set('port', process.env.PORT || config.goldServer.port);
         app.use(express.logger('dev'));
         app.use(express.bodyParser());
         app.use(express.methodOverride());

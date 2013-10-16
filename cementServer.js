@@ -52,14 +52,11 @@ var amqp = require('amqp'),
 
     function pushToTheQueue(data) {
         // Send to one of the connections that is connected to a queue
-        // TODO: send randomly , not to the first open connection (which is the easiest 'algorithm')
-        var send = false;
-        this.connections.forEach(function(connection) {
-          if(connection && !send) {
-            connection.publish(config.cementServer.queueName, data);
-            send = true;
-          }
-        });
+        var conNum = Math.floor(Math.random()*100%this.connections.length);
+        this.connections[conNum].publish(config.cementServer.queueName, data);
+
+        console.log ("Loading through connection " + conNum + ' -> ' +
+            JSON.stringify(data));
     }
 
     function addCement() {

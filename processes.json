@@ -1,10 +1,5 @@
 [
   {
-    "name"      : "central",
-    "script"    : "./centralServer.js",
-    "instances" : "1"
-  },
-  {
     "name"      : "wood",
     "script"    : "./woodServer.js",
     "instances" : "1"

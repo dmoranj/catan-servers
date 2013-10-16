@@ -226,7 +226,7 @@ function getThings(req, res) {
         .findOne({
             rnd: {$gte: Math.random()}
         })
-        .nin(['Oro', 'Madera', 'Cemento', 'Metal'])
+        .nin("name", ['Oro', 'Madera', 'Cemento', 'Metal'])
         .sort({rnd:1})
         .select({_id: 0, __v: 0, rnd: 0, retrieved: 0})
         .exec(function (error, thing) {

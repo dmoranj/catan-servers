@@ -1,22 +1,26 @@
 [
   {
-    "name"      : "central",
-    "script"    : "./centralServer.js",
-    "instances" : "1"
+    "name"      : "gold",
+    "script"    : "./goldServer.js",
+    "instances" : "1",
+    "max_restarts" : "2"
   },
   {
     "name"      : "wood",
     "script"    : "./woodServer.js",
-    "instances" : "1"
+    "instances" : "1",
+    "max_restarts" : "2"
   },
   {
     "name"      : "cement",
     "script"    : "./cementServer.js",
-    "instances" : "1" 
+    "instances" : "1", 
+    "max_restarts" : "2"
   },
   {
     "name"      : "steel",
     "script"    : "./steelServer.js",
-    "instances" : "1"
+    "instances" : "1",
+    "max_restarts" : "2"
   }
 ]

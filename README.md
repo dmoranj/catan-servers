@@ -443,11 +443,11 @@ or an error if there is no wood to chop
 
 ### Steel (Socket.IO)
 
-The resources of this server have to be negotiated under Socket.IO. The "Clown algorithm" to get them has been summarized
-in the following diagram.
+The resources of this server have to be negotiated under Socket.IO, with some interleaved HTTP interactions. NOTE:
+there are different ports for the Socket.IO messages and for the HTTP endpoint (default values 3004 and 3005 respectively).
 
-
-This is the detailed description of each of the steps:
+The "Clown algorithm" to get them is detailed 
+in the following steps:
 
 1. When a new Socket.IO connection is received, the server sends blank `¡Hola Don Pepito!` message to the Client.
 2. The client replies emitting an `¡Hola Don Jose!` message. This message can be repeated as many times as needed

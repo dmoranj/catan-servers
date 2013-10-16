@@ -52,13 +52,7 @@ function start() {
     });
 }
 
-resources.cleanResources(function (error) {
-    if (error) {
-        console.log("Critical error cleaning resources: " + error);
-    } else {
-        start();
-    }
-})
+start();
 
 
 

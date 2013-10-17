@@ -9,7 +9,7 @@ config.endpoint = {
 config.woodServer = {
     host: "http://relay2",
     port: 3003,
-    period: 1000,
+    period: 100,
     type: "Madera"
 };
 

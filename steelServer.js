@@ -248,7 +248,7 @@ function start() {
 }
 
 resources.createServer(config.steelServer.type,
-    config.steelServer.host + "/" +   config.steelServer.port,
+    config.steelServer.host + ":" +   config.steelServer.port,
     config.steelServer.description,
     function (error) {
         connection = getRedisConnection();

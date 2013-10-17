@@ -273,7 +273,7 @@ function start() {
 var app = express();
 
 resources.createServer(config.goldServer.type,
-    config.goldServer.host + "/" +   config.goldServer.port,
+    config.goldServer.host + ":" +   config.goldServer.port,
     config.goldServer.description,
     function (error) {
         start();

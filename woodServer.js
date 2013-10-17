@@ -53,7 +53,7 @@ function start() {
 }
 
 resources.createServer(config.woodServer.type,
-    config.woodServer.host + "/" +   config.woodServer.port,
+    config.woodServer.host + ":" +   config.woodServer.port,
     config.woodServer.description,
     function (error) {
         start();

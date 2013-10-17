@@ -161,6 +161,7 @@ function initiateSocketIO() {
 
         socket.on("¡Adios Don Jose!", function (data) {
             console.log("Protocol finished");
+            socket.disconnect();
         });
     });
 }

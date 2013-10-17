@@ -7,14 +7,14 @@ config.endpoint = {
 };
 
 config.woodServer = {
-    host: "http://relay2",
+    host: "http://10.95.195.163",
     port: 3003,
     period: 100,
     type: "Madera"
 };
 
 config.goldServer = {
-    host: "http://relay2",
+    host: "http://10.95.195.163",
     port: 3008,
     period: 2000,
     type: "Oro",
@@ -45,7 +45,7 @@ config.cementServer = {
         heartbeat: 1200
       }],
     queueName: 'cemento',   // We don't create the queue, so it shall be created as PERSISTENT into RabbitMQ
-    period: 2000,
+    period: 100,
     type: "Cemento"
 };
 
@@ -55,7 +55,7 @@ config.woodServer.description = "Simple HTTP server without authentication. Can 
     "mined making a GET request to the '/chop' resource. It provides " + config.woodServer.type;
 
 config.steelServer = {
-    host: "http://relay2",
+    host: "http://10.95.195.163",
     port: 3005,
     socketIOPort: 3004,
     period: 1000,

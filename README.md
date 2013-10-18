@@ -565,6 +565,18 @@ Each Cement resource is a JSON object with this format:
 If multiple clients are connected to the queue, a Round-Robin alghoritm is used since this is a 'Work Queue'.
 See: http://www.rabbitmq.com/getstarted.html & http://www.rabbitmq.com/tutorials/tutorial-two-python.html
 
+It's important to set the correct options to the queue connection.
+
+```
+Queue name: "cemento"
+
+Options:
+ durable: true
+ autoDelete: false
+
+Server: The same one as the catan central server
+```
+
 ### Gold (Merchant API)
 
 The Gold Resource Server is intended to be used for trading goods. It provides the consumer with two different 
